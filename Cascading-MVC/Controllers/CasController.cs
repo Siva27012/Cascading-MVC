@@ -28,6 +28,13 @@ namespace Cascading_MVC.Controllers
             ViewBag.SList = new SelectList(selectList, "Sid", "Sname");
             return PartialView("DisplayStates");
         }
+        public ActionResult GetCityList(int Sid)
+        {
+            SampleDBEntities sd = new SampleDBEntities();
+            List<City> selectList = sd.Cities.Where(x => x.Sid == Sid).ToList();
+            ViewBag.CityList = new SelectList(selectList, "Cityid", "Cityname");
+            return PartialView("DisplayCities");
+        }
 
     }
 }
